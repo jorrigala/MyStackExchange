@@ -30,7 +30,9 @@
     });
     $('#login-button').click(function() {
       SE.authenticate({
-          success: function(data) {console.log("success "+data)},
+          success: function(data) {
+            console.log("success "+data);
+          },
           error: function(data) { console.log("error " + data) },
           scope: ['read_inbox'],
           networkUsers: true

@@ -4,40 +4,26 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script type='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>
+    <script type='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
   </head>
   <body>
-    
-    <div class="container">
-      <!-- Content here -->
-      <h1>Hello, world! Fellows</h1>
-      <button id="login-button"> Log into StackOverFlow</button>
-    </div>
+    <my-app>Loading AppComponent content here ...</my-app>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    
-    <script type='text/javascript'>
-    SE.init({
-        clientId: 8896,
-        key: 'KLDMRf*lMVmapIyBANG5Cw((',
-        channelUrl: 'https://jorrigala.github.io/MyStackExchange/proxy.html',
-        complete: function (data) { console.log(data)}
-    });
-    $('#login-button').click(function() {
-      SE.authenticate({
-          success: function(data) {
-            console.log("success "+data);
-          },
-          error: function(data) { console.log("error " + data) },
-          scope: ['read_inbox'],
-          networkUsers: true
-      });
-    });
-  </script>
   </body>
 </html>

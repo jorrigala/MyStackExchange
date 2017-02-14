@@ -1,5 +1,5 @@
 dist: trusty
-sudo: required
+sudo: false
 language: node_js
 cache:
   directories:
@@ -10,6 +10,6 @@ install:
 - npm install
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: script/deploy.sh
   on:
     branch: master

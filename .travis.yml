@@ -8,11 +8,8 @@ node_js:
 - '5'
 install:
 - npm install
-before_script:
-  - git config --global user.email "pavan.jorrigala@gmail.com"
-  - git config --global user.name "jorrigala"
-  - git remote rm origin
-  - git remote add origin https://user:${GH_TOKEN}@github.com/jorrigala/MyStackExchange.git
-script: npm run deploy
-dd:
-  secure: gs9fqh9iueAXk2IhOYMnlv8mNeC1aOnAKfEQmMlE4iqnWd3COAWTEmiR6ApKEsyQca7SW2y1PG3gDbZO6Azjag7u9BjJs+djk1aUnOak6hJdfRRFRj9uSQ6I30WpLs35ixlWrL6Fn4Y8LvKfurdJn13l/1yfbgIDNFvUIF5d2OliSL6+o008u46l+5LGJD5aMggXpBG4fxjSbrGlRODHtqxe4kya0KAeSOGDXeUl7EWSDls3KxUdSOURQLQJIysAE2+FaQf1wPFxzeAOqrrUoWr+Kbw6lwettcs9OEheMeClGZk6LtfNBQOvOwPKHUUQjtvHt8SDiixQlcJvoe2G7xTCOIoizJar+j7h2VJ6cY3WwBIO9PoMLLnOzsB1sXHxn8mguXA6nSZdmSarIK8dsidg2/8sJe0xnHBtgKFICocPWXqr1/HPidsavI/RsvIv3XMCv8+QYHCBwpmvJ+b/7Yq4Lsi3t910QtrUyY+8iVMZh2lWMxThp8hLRt1ew1eW1QkO1Ub6ASpg7nKbdMUUWR1JqbToJ9GEJiOlPjt0WpWxyfmaTh6uzjWHemYjMHno2dXdis5soa+cNqyB9kNgdubttEgwYMf/6uUjxQaV20geiwvTDRydUN9A7IzyJqI2smYSc9I8tB3U2A7vxSCSKrcp2VVgN08Nohj7UrJb9R8=
+deploy:
+  provider: script
+  script: scripts/deploy.sh
+  on:
+    branch: master

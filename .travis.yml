@@ -1,5 +1,5 @@
 dist: trusty
-sudo: false
+sudo: required
 language: node_js
 cache:
   directories:
@@ -8,8 +8,15 @@ node_js:
 - '5'
 install:
 - npm install
-deploy:
-  provider: script
-  script: script/deploy.sh
-  on:
-    branch: master
+before_script:
+- git config --global user.email "pavan.jorrigala@gmail.com"
+- git config --global user.name "jorrigala"
+- git remote rm origin
+- git remote add origin https://user:${GH_TOKEN}@github.com/jorrigala/MyStackExchange.git
+script: npm run deploy
+branches:
+  only:
+    - gh-pages
+env:
+  global:
+    secure: BNlQB0luivNKrhfvcXGLTwoi8HamZUSTz2Y42xokySR2IKvo/etrAUWC7f9N48Gl0iMylq7TUqcE7BvH1MWEWUC3yG8Dwb7uF3LJaMSxifJiK4CD9nRxzQbH29JVYt3y657mi6mMehEJlaBUybzc0bEr+mNWE7Su70qeKXyIMpl+qPNfKKiaxNhwYxJXD5hk9mQ92ElXJvN+7HmLNK6xji1ymweJVxiMisyhCf/zuRlMXZBmvmvhO7ywgcvg5C8mUSGJzq37JdDwI+RUkKh4WUk+dpWlow6QrTyGMeryGPOlcuAfMGUbRIhybJtvtML4J/f+zA73lfKkW/0iNIDRXFMBCXW7L0TaqMvJyy0eU1oPn5WTbJcw7I0lJLTkccBza7YtMUm5hKAr2vyENcLl5r4hlHC0Wh/6sRcwnqyd7wT2oxE22pJ3RI/+ASv78ygkD3Q1NT4LQP2W3r44QYe9Pp25mrqagJOBC7YbzqVIoxsKcF/6Mh1EF9R/DpVZLxaO4fcDITuD+NO0hENen9BD6XL2J5WSwafc9geiinKZ+QRPn1Clcjs9lBHGEXDLGoqTRf9nPWA2Gfvg0S5xbRAdVTQLrNOi3eQRiwuSgyRIi3qRUtJCuEQAEgBbghQEHKBRHq0qQvaW7fpotPQc/+rLec0EQ8e1tbdhpd/r3vks06U=
